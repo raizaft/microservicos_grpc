@@ -1,12 +1,12 @@
-package grpc
+package grpcadapter
 
 import (
 	"context"
 
-	"github.com/raizaft/microservicos_grpc/order/internal/adapters/grpc"
 	"github.com/raizaft/microservicos_grpc/order/internal/application/core/api"
 	"github.com/raizaft/microservicos_grpc/order/internal/application/core/domain"
 	pb "github.com/raizaft/microservicos_grpc_proto/golang/order"
+	"google.golang.org/grpc"
 )
 
 type Server struct {

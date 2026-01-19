@@ -5,7 +5,7 @@ import (
 	"net"
 
 	"github.com/raizaft/microservicos_grpc/order/internal/adapters/db"
-	grpc_adapter "github.com/raizaft/microservicos_grpc/order/internal/adapters/grpc"
+	grpcadapter "github.com/raizaft/microservicos_grpc/order/internal/adapters/grpc"
 	payment_adapter "github.com/raizaft/microservicos_grpc/order/internal/adapters/payment"
 	"github.com/raizaft/microservicos_grpc/order/internal/application/core/api"
 	"google.golang.org/grpc"
@@ -22,7 +22,7 @@ func main() {
 	app := api.NewApplication(db, payment)
 
 	server := grpc.NewServer()
-	grpc_adapter.Register(server, app)
+	grpcadapter.Register(server, app)
 
 	listener, _ := net.Listen("tcp", ":50052")
 	log.Println("📦 Order rodando na porta 50052")
