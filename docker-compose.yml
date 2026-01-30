@@ -1,0 +1,19 @@
+version: '3'
+services:
+  payment:
+    build: ./payment
+    ports:
+      - "50051:50051"
+
+  order:
+    build: ./order
+    ports:
+      - "50052:50052"
+    depends_on:
+      - payment
+      - shipping
+
+  shipping:
+    build: ./shipping
+    ports:
+      - "50053:50053"

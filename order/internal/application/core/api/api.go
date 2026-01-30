@@ -36,3 +36,18 @@ func (a *Application) PlaceOrder(order domain.Order) (domain.Order, error) {
 	order.Status = "Paid"
 	return order, nil
 }
+
+var stock = map[string]bool{
+	"ABC": true,
+	"XYZ": true,
+	"123": true,
+}
+
+func validateStock(items []domain.OrderItem) error {
+	for _, it := range items {
+		if !stock[it.ProductCode] {
+			return errors.New("product not found in stock")
+		}
+	}
+	return nil
+}
